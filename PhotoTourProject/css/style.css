@@ -5,8 +5,11 @@
     gap: 40px; /* spacing between items */
     list-style-type: none;
     margin: 0;
+    top:0;
     padding: 14px 0;
+    z-index: 1000;
     background-color: #333;
+    position: sticky;
   }
   
   .menu li a {
@@ -18,8 +21,9 @@
   }
   
   .menu li a:hover {
-    background-color: #111;
+    background-color: #555;
     border-radius: 5px;
+    text-decoration: underline;
   }
   
   /* Centered Headings */
@@ -57,11 +61,20 @@ body {
 /* Main content grows to push footer down */
 main {
   flex: 1;
+  max-width: 900px;
+  margin:0 auto;
+  padding: 20px;
 }
 
 /* Footer styling */
 footer {
-  text-align: center;
-  background-color: #f4f4f4;
-  padding: 20px 0;
+  background-color: #222;
+  color: #fff;
+  padding: 20px;
+  font-size: 14px;
+}
+
+img {
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
