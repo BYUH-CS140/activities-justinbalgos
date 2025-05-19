@@ -41,11 +41,27 @@
     line-height: 1.6;
   }
   
-  /* Footer Centering */
-  footer {
-    text-align: center;
-    margin-top: 40px;
-    padding: 20px 0;
-    background-color: #f4f4f4;
-  }
-  
+  /* Make the whole page take full height */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* Set up flexbox layout */
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Main content grows to push footer down */
+main {
+  flex: 1;
+}
+
+/* Footer styling */
+footer {
+  text-align: center;
+  background-color: #f4f4f4;
+  padding: 20px 0;
+}
