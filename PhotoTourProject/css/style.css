@@ -35,6 +35,7 @@
   /* Center the Image */
   figure {
     text-align: center;
+    margin: 20px 0;
   }
   
   /* Paragraph Justification */
@@ -57,9 +58,8 @@ body {
   display: flex;
   flex-direction: column;
   font-family: "Playfair", serif;
-  font-optical-sizing: auto;
   font-weight: 300;
-  font-size: 32px;
+  font-size: 20px;
   font-style: normal;
   background-color: #faf3e0;
   font-variation-settings:
@@ -99,6 +99,10 @@ ul.custombullets li{
   background-repeat: no-repeat;
   background-position: 0 5px;  /* fine-tune vertically */
   background-size: 25px 25px;  /* resize image */
-  padding-left: 24px;          /* space for bullet and text */
+  padding-left: 32px;          /* space for bullet and text */
   margin-bottom: 8px;     
+}
+
+figcaption {
+  font-size: 14px; /* or any size you prefer */
 }
