@@ -88,3 +88,17 @@ img {
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
   border: 1px solid brown;
 }
+
+ul.custombullets{
+  list-style: none;
+  padding-left: 0;
+}
+
+ul.custombulllets{
+  background-image:url('../images/bul.jpeg') ; 
+  background-repeat: no-repeat;
+  background-position: 0 5px;  /* fine-tune vertically */
+  background-size: 16px 16px;  /* resize image */
+  padding-left: 24px;          /* space for bullet and text */
+  margin-bottom: 8px;     
+}
