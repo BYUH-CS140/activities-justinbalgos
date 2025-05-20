@@ -59,9 +59,11 @@ body {
   font-family: "Playfair", serif;
   font-optical-sizing: auto;
   font-weight: 300;
+  font-size: 32px;
   font-style: normal;
   font-variation-settings:
     "wdth" 100;
+  
 }
 
 /* Main content grows to push footer down */
