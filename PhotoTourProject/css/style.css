@@ -58,7 +58,7 @@ body {
   flex-direction: column;
   font-family: "Playfair", serif;
   font-optical-sizing: auto;
-  font-weight: <weight>;
+  font-weight: 300;
   font-style: normal;
   font-variation-settings:
     "wdth" 100;
