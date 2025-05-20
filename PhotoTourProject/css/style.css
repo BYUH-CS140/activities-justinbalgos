@@ -66,7 +66,7 @@ body {
   background-position: center top;
   background-size: cover; /* or 'contain' depending on look */
   background-attachment: fixed; /* optional for scroll effect */
-  background-color: #faf3e0; /*
+  background-color: #faf3e0; 
   font-variation-settings:
     "wdth" 100;
   
