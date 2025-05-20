@@ -64,7 +64,7 @@ body {
   background-image: url('../images/bgd.png');
   background-repeat: no-repeat;
   background-position: center top;
-  background-size: cover; /* or 'contain' depending on look */
+  background-size: cover; 
   background-attachment: fixed; /* optional for scroll effect */
   background-color: #faf3e0; 
   font-variation-settings:
@@ -109,5 +109,5 @@ ul.custombullets li{
 }
 
 figcaption {
-  font-size: 14px; /* or any size you prefer */
+  font-size: 14px;
 }
