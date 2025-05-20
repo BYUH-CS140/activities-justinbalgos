@@ -98,7 +98,7 @@ ul.custombullets li{
   background-image:url('../images/bul.png') ; 
   background-repeat: no-repeat;
   background-position: 0 5px;  /* fine-tune vertically */
-  background-size: 16px 16px;  /* resize image */
+  background-size: 25px 25px;  /* resize image */
   padding-left: 24px;          /* space for bullet and text */
   margin-bottom: 8px;     
 }
