@@ -111,3 +111,8 @@ ul.custombullets li{
 figcaption {
   font-size: 14px;
 }
+
+.highlight {
+  background-color: yellow;
+  font-weight: bold;
+}
