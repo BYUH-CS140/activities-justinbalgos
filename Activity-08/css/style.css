@@ -1,5 +1,5 @@
 /* Navigation Menu */
-.menu {
+.nav {
     display: flex;
     justify-content: center;
     gap: 40px; /* spacing between items */
@@ -12,7 +12,7 @@
     position: sticky;
   }
   
-  .menu li a {
+  .nav li a {
     display: block;
     color: white;
     text-align: center;
@@ -20,33 +20,52 @@
     text-decoration: none;
   }
   
-  .menu li a:hover {
+  .nav li a:hover {
     background-color: #555;
     border-radius: 5px;
     text-decoration: underline;
   }
   
-  /* Centered Headings */
-  header h1, header h2 {
-    text-align: center;
-    margin: 0.5em 0;
-  }
   
-  /* Center the Image */
-  figure {
-    text-align: center;
-    margin: 20px 0;
-  }
-  
-  /* Paragraph Justification */
-  p {
-    text-align: justify;
-    margin: 1em auto;
-    width: 85%;
-    line-height: 1.6;
-  }
-  
-  /* Make the whole page take full height */
+/* Page Header ID */
+#page-header {
+  background-color: #444;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  font-size: 1.5em;
+}
+
+/* Centered Headings */
+header h1, header h2 {
+  text-align: center;
+  margin: 0.5em 0;
+}
+
+/* .title class */
+.title {
+  font-size: 2em;
+  font-weight: bold;
+  color: #333;
+  margin: 20px 0;
+  text-align: center;
+}
+
+/* Center the Image */
+figure {
+  text-align: center;
+  margin: 20px 0;
+}
+
+/* Paragraph Justification */
+p {
+  text-align: justify;
+  margin: 1em auto;
+  width: 85%;
+  line-height: 1.6;
+}
+
+/* Make the whole page take full height */
 html, body {
   height: 100%;
   margin: 0;
@@ -65,18 +84,16 @@ body {
   background-repeat: no-repeat;
   background-position: center top;
   background-size: cover; 
-  background-attachment: fixed; /* optional for scroll effect */
-  background-color: #faf3e0; 
-  font-variation-settings:
-    "wdth" 100;
-  
+  background-attachment: fixed;
+  background-color: #faf3e0;
+  font-variation-settings: "wdth" 100;
 }
 
 /* Main content grows to push footer down */
 main {
   flex: 1;
   max-width: 900px;
-  margin:0 auto;
+  margin: 0 auto;
   padding: 20px;
 }
 
@@ -94,18 +111,25 @@ img {
   border: 1px solid brown;
 }
 
-ul.custombullets{
+ul.custombullets {
   list-style: none;
   padding-left: 0;
 }
 
-ul.custombullets li{
-  background-image:url('../images/bul.png') ; 
+ul.custombullets li {
+  background-image: url('../images/bul.png');
   background-repeat: no-repeat;
-  background-position: 0 5px;  /* fine-tune vertically */
-  background-size: 25px 25px;  /* resize image */
-  padding-left: 32px;          /* space for bullet and text */
-  margin-bottom: 8px;     
+  background-position: 0 5px;
+  background-size: 25px 25px;
+  padding-left: 32px;
+  margin-bottom: 8px;
+}
+
+/* .resources li selector */
+.resources li {
+  margin-left: 20px;
+  list-style-type: square;
+  color: #555;
 }
 
 figcaption {
