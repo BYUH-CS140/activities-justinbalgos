@@ -6,3 +6,11 @@ body {
   padding: 0;
   line-height: 1.6;
 }
+/* Title Heading Style */
+.title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  letter-spacing: 0.05em;
+  color: #f0f0f0; 
+  margin-bottom: 0.5rem;
+}
