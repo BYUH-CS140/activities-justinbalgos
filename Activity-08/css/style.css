@@ -84,3 +84,21 @@ resources {
   margin-bottom: 0.75rem;
   color: #444;
 }
+
+/* Highlight */
+.highlight {
+  background-color: #fff89a;
+  color: #222;
+  font-weight: bold;
+  padding: 0.2em 0.4em;
+  border-radius: 4px;
+}
+
+/* Footer */
+footer {
+  background-color: #333333;
+  color: #f0f0f0;
+  text-align: center;
+  padding: 2rem 1rem;
+  font-size: 0.9rem;
+}
