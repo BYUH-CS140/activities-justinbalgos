@@ -70,3 +70,17 @@ h2, h3 {
   margin-top: 1.5rem;
   color: #333333;
 }
+
+resources {
+  background-color: #ffffff;
+  padding: 1.5rem;
+  border-radius: 10px;
+  width: 90%;
+  margin: 2rem auto;
+  border: 1px solid #ccc;
+}
+
+.resources li {
+  margin-bottom: 0.75rem;
+  color: #444;
+}
