@@ -25,7 +25,11 @@
     border-radius: 5px;
     text-decoration: underline;
   }
-  
+  .nav-list > li {
+    margin: 0 10px;
+    list-style: none;
+    display: inline-block;
+  }
   
 /* Page Header ID */
 #page-header {
