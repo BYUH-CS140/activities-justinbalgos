@@ -6,6 +6,14 @@ body {
   padding: 0;
   line-height: 1.6;
 }
+
+#page-header {
+  background-color: #333333; 
+  color: #f0f0f0;           
+  padding: 2rem 1rem;
+  text-align: center;
+  border-bottom: 4px solid #fff89a; 
+}
 /* Title Heading Style */
 .title {
   font-size: 2.5rem;
