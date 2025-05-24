@@ -7,12 +7,12 @@ body {
   line-height: 1.6;
 }
 
-/#page-header {
-  background-color: #333333; /* Same dark color as footer */
-  color: #f0f0f0;            /* Light text like footer */
+#page-header {
+  background-color: #333333; 
+  color: #f0f0f0;           
   padding: 2rem 1rem;
   text-align: center;
-  border-bottom: 4px solid #fff89a; /* Optional: adds visual tie to highlight */
+  border-bottom: 4px solid #fff89a; 
 }
 
 /* Title Heading Style */
@@ -20,7 +20,7 @@ body {
   font-size: 2.5rem;
   font-weight: bold;
   letter-spacing: 0.05em;
-  color: #f0f0f0; /* matches footer text */
+  color: #f0f0f0; 
   margin-bottom: 0.5rem;
 }
 /* Navigation Bar */
@@ -64,7 +64,6 @@ main {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
-/* Image Styling */
 img {
   display: block;
   margin: 1rem auto;
@@ -80,7 +79,6 @@ h2, h3 {
   color: #333333;
 }
 
-/* Resources Section */
 .resources {
   background-color: #ffffff;
   padding: 1.5rem;
