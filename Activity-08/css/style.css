@@ -13,6 +13,7 @@ body {
   padding: 2rem 1rem;
   text-align: center;
   border-bottom: 4px solid #fff89a; 
+  background-image: url('../images/bgd.png');
 }
 /* Title Heading Style */
 .title {
