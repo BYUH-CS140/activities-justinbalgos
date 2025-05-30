@@ -64,7 +64,7 @@ garden {
 }
 
 section {
-  margintop: 30px;
+  margin-top: 30px; /* missing - */
 }
 
 h2 {
