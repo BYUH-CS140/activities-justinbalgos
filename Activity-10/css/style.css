@@ -58,11 +58,11 @@ main {
 #garden {  /* missing # as a selector to match with html file */
   width: 300px;
   height: auto;
+  float: right;  
+  margin: 0 0 20px 20px;  /* i adjusted the image size from the zip to match its expected result.*/
   border: 5px solid brown;
   border-radius: 20px;
-  box-shadow: 5px 5px 15px grey;  /* i adjusted the image size to match the desired result */
-  display: block;
-  margin: 20px auto;
+  box-shadow: 5px 5px 15px grey;
 }
 
 section {
