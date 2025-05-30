@@ -51,7 +51,7 @@ nav a::hover {
 
 main {
   background-color: lightgreen;
-  margin: 50px 100;
+  margin: 50px 100px; /* missing px on 100 */
   padding: 50px;
 }
 
