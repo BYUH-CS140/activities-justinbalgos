@@ -1,7 +1,7 @@
 body {
   background-color: forestgreen; /* missing a dash "-"*/
   margin: 0;
-  font-family: 'Protest Riot', Gill Sans; /*misspelled gill sans , and adding protest riot to match the one that we import*/
+  font-family:  Gill Sans; /*misspelled gill sans */
 }
 
 header {
