@@ -56,11 +56,13 @@ main {
 }
 
 #garden {  /* missing # as a selector to match with html file */
+  width: 300px;
+  height: auto;
   border: 5px solid brown;
-  border-radius: 30px;
-  box-shadow: 5px 5px 15px grey;
-  height: 30px; /* missing px on 100 */
-  width: 30%;
+  border-radius: 20px;
+  box-shadow: 5px 5px 15px grey;  /* i adjusted the image size to match the desired result */
+  display: block;
+  margin: 20px auto;
 }
 
 section {
