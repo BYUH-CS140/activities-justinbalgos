@@ -9,7 +9,7 @@ header {
   color: #004d00;
   text-align: center;
   font-size: 2em;
-  paddding: 20px;
+  padding: 20px; /* padding is misspelled */
   margin: 0;
 }
 
