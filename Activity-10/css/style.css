@@ -44,7 +44,7 @@ nav a {
   padding: 14px 16px;
 }
 
-nav a::hover {
+nav a:hover {   /* extra : */
   background-color: gold;
   color: #2e1a1a;
 }
@@ -59,7 +59,7 @@ garden {
   border: 5px solid brown;
   border-radius: 30px;
   box-shadow: 5px 5px 15px grey;
-  height: 30;
+  height: 30px; /* missing px on 100 */
   width: 30%;
 }
 
