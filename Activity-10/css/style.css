@@ -1,11 +1,11 @@
 body {
-  background color: forestgreen;
+  background-color: forestgreen; /* missing a dash "-"*/
   margin: 0;
   font-family: Gil Sans;
 }
 
 header {
-  background-color: G0ld;
+  background-color: Gold; /*gold is mispelled */
   color: #004d00;
   text-align: center;
   font-size: 2em;
