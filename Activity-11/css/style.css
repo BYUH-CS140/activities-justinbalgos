@@ -1,0 +1,148 @@
+/* Navigation Menu */
+
+/* Base menu */
+.menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  background-color: #333;
+  display: flex;
+  justify-content: center;
+}
+
+.menu > li {
+  position: relative;
+}
+
+.menu > li > a {
+  display: block;
+  color: white;
+  padding: 16px 20px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.menu > li > a:hover {
+  background-color: #555;
+}
+
+/* Dropdown menu */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #333;
+  min-width: 200px;
+  z-index: 1;
+}
+
+.dropdown-content li a {
+  color: white;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content li a:hover {
+  background-color: #555;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+  /* Centered Headings */
+
+
+  header h1, header h2 {
+    text-align: center;
+    margin: 0.5em 0;
+  }
+
+  .icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 8px;
+    vertical-align: middle;
+  }
+  
+  /* Center the Image */
+  figure {
+    text-align: center;
+    margin: 20px 0;
+  }
+  
+  /* Paragraph Justification */
+  p {
+    text-align: justify;
+    margin: 1em auto;
+    width: 85%;
+    line-height: 1.6;
+  }
+  
+  /* Make the whole page take full height */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* Set up flexbox layout */
+body {
+  display: flex;
+  flex-direction: column;
+  font-family: "Playfair", serif;
+  font-weight: 300;
+  font-size: 20px;
+  font-style: normal;
+  background-image: url('../images/bgd.png');
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: cover; 
+  background-attachment: fixed; /* optional for scroll effect */
+  background-color: #faf3e0; 
+  font-variation-settings:
+    "wdth" 100;
+  
+}
+
+/* Main content grows to push footer down */
+main {
+  flex: 1;
+  max-width: 900px;
+  margin:0 auto;
+  padding: 20px;
+}
+
+/* Footer styling */
+footer {
+  background-color: #222;
+  color: #fff;
+  padding: 20px;
+  font-size: 14px;
+}
+
+img {
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  border: 1px solid brown;
+}
+
+ul.custombullets{
+  list-style: none;
+  padding-left: 0;
+}
+
+ul.custombullets li{
+  background-image:url('../images/bul.png') ; 
+  background-repeat: no-repeat;
+  background-position: 0 5px;  /* fine-tune vertically */
+  background-size: 25px 25px;  /* resize image */
+  padding-left: 32px;          /* space for bullet and text */
+  margin-bottom: 8px;     
+}
+
+figcaption {
+  font-size: 14px;
+}
