@@ -1,0 +1,17 @@
+.grid-container {
+    display: grid;
+    gap: 10px;
+    grid-template-columns: 1fr 2fr;
+    background-color: aliceblue;
+    padding: 10px;
+}
+
+.grid-item:first-child {grid-column: 1/3;}
+.grid-item:last-child {grid-column: 1/3;}
+
+.grid-item{
+    background-color: blue;
+    padding: 20px;  
+    text-align:center;
+    font-size: 1.2rem;
+}
