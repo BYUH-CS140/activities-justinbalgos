@@ -153,6 +153,10 @@ figcaption {
   text-align: center;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  display: flex;
+  justify-content: center;
+  flex-wrap: nowrap; /* Ensure they stay in one line */
+  gap: 16px;
 }
 
 .top-places h2 {
@@ -163,7 +167,7 @@ figcaption {
 
 .places-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(5, 1fr); /* Exactly 5 in one line */
   gap: 20px;
 }
 
@@ -200,4 +204,34 @@ figcaption {
 .place p a:hover {
   color: #7a8450; /* olive green hover */
   text-decoration: underline;
+}
+
+.flex-section {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 20px 0;
+  flex-wrap: wrap; /* allows responsiveness */
+}
+
+.flex-section .column {
+  flex: 1 1 45%;
+  background-color: #fffaf5;
+  border: 1px solid #d3c0a3;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+.float-wrapper {
+  padding: 20px 0;
+  clear: both;
+}
+
+.float-img {
+  float: left;
+  width: 300px;
+  margin: 0 20px 10px 0;
+  border: 2px solid #c39f85;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
