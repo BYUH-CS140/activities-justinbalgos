@@ -291,3 +291,21 @@ figcaption {
     flex: 1 1 48%;
   }
 }
+
+@media (min-width: 1024px) {
+  .places-grid {
+    grid-template-columns: repeat(5, 1fr); /* back to 5 per row */
+  }
+
+  .flex-section {
+    flex-wrap: nowrap;
+  }
+
+  .float-img {
+    width: 300px;
+  }
+
+  main {
+    padding: 40px;
+  }
+}
