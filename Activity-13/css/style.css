@@ -275,6 +275,64 @@ figcaption {
     max-width: 100%;
     height: auto;
   }
+
+  body {
+    font-size: 16px; /* slightly smaller text for phones */
+    padding: 10px;
+  }
+
+  header h1 {
+    font-size: 1.5em;
+    margin: 10px 0;
+  }
+
+  header h2 {
+    font-size: 1em;
+    margin: 5px 0 15px;
+  }
+
+  main {
+    padding: 10px;
+  }
+
+  p, figcaption {
+    width: 100%;
+    padding: 0 10px;
+    text-align: left;
+  }
+
+  .flex-section {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .flex-section .column {
+    width: 100%;
+    padding: 10px;
+  }
+
+  .float-img {
+    width: 100%;
+    margin: 10px 0;
+  }
+
+  .top-places {
+    padding: 10px;
+  }
+
+  .places-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .place {
+    padding: 10px;
+  }
+
+  footer {
+    text-align: center;
+    font-size: 12px;
+  }
 }
 
 @media (min-width: 768px) {  /* for tablets and ipads */
