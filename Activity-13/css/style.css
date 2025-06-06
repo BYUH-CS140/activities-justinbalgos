@@ -276,3 +276,18 @@ figcaption {
     height: auto;
   }
 }
+
+@media (min-width: 768px) {  /* for tablets and ipads */
+  .places-grid {
+    grid-template-columns: repeat(3, 1fr); /* 3 items per row on tablets */
+  }
+
+  .float-img {
+    float: left;
+    width: 250px;
+  }
+
+  .flex-section .column {
+    flex: 1 1 48%;
+  }
+}
