@@ -374,7 +374,7 @@ ul.custombullets{
 }
 
 ul.custombullets li{
-  background-image:url('../images/bul.png') ; 
+  background-image:url('../images/bullet1.jpg') ; 
   background-repeat: no-repeat;
   background-position: 0 5px;  /* fine-tune vertically */
   background-size: 25px 25px;  /* resize image */
