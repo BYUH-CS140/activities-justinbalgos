@@ -235,3 +235,44 @@ figcaption {
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
+
+@media (max-width: 768px) {  /* this is for mobile */
+  .menu {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .menu > li > a {
+    padding: 10px;
+    text-align: center;
+  }
+
+  .places-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .float-img {
+    width: 100%;
+    float: none;
+    display: block;
+    margin: 0 auto 20px;
+  }
+
+  .flex-section {
+    flex-direction: column;
+  }
+
+  .flex-section .column {
+    width: 100%;
+  }
+
+  p {
+    width: 95%;
+  }
+
+  figure img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+  }
+}
