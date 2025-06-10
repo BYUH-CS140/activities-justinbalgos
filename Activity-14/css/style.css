@@ -1,5 +1,7 @@
 /* Navigation Menu */
-
+main {
+  margin-top: 20px;
+}
 /* Base menu */
 .menu {
   list-style: none;
@@ -110,7 +112,6 @@ body {
 /* Main content grows to push footer down */
 main {
   flex: 1;
-  max-width: 900px;
   margin:0 auto;
   padding: 20px;
 }
@@ -167,12 +168,11 @@ figcaption {
 
 .places-grid {
   display: grid;
-  grid-template-columns: repeat(5, 1fr); /* Exactly 5 in one line */
+  grid-template-columns: 1fr; /* Exactly 5 in one line */
   gap: 20px;
 }
 
 .place {
-  flex: 1 1 calc(20% - 20px); /* 5 columns */
   background-color: #fffaf5; /* soft white background */
   border: 1px solid #a79873; /* muted brown border */
   border-radius: 10px;
@@ -248,7 +248,9 @@ figcaption {
   }
 
   .places-grid {
-    grid-template-columns: 1fr;
+    display: grid;
+    grid-template-columns: 1fr; /* Mobile default: 1 per row */
+    gap: 20px;
   }
 
   .float-img {
@@ -337,7 +339,7 @@ figcaption {
 
 @media (min-width: 768px) {  /* for tablets and ipads */
   .places-grid {
-    grid-template-columns: repeat(3, 1fr); /* 3 items per row on tablets */
+    grid-template-columns: repeat(2, 1fr); /* 3 items per row on tablets */
   }
 
   .float-img {
@@ -363,9 +365,75 @@ figcaption {
     width: 300px;
   }
 
-  main {
+  body {
+    grid-template-columns: 280px minmax(900px, 1fr); /* slightly wider main */
+    display: grid; 
+    grid-template-areas:
+    "header header"
+    "nav main"
+    "footer footer";
+    max-width: 1300px;
+    margin: 0 auto;
     padding: 40px;
+    column-gap: 40px;
+    justify-content: center;
   }
+
+  header {
+    padding-bottom: 20px;
+    text-align: center;
+  }
+
+  nav {
+    background-color: #333;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    align-self: start;
+    height: fit-content;
+    width: 100%;
+  }
+
+  main {
+    grid-area: main;
+    max-width: unset;
+    padding: 0 20px;
+    background-color: #fffaf5;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+  }
+
+  footer {
+    grid-area: footer;
+    background-color: #222;
+    color: #fff;
+    padding: 20px;
+    font-size: 14px;
+    text-align: center;
+    max-width: 100%;
+    margin: 0;
+  }
+  .menu {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .menu > li {
+    margin-bottom: 10px;
+  }
+  .menu > li > a {
+    padding: 10px 16px;
+    font-size: 16px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    transition: background-color 0.3s ease;
+  }
+  .menu > li > a:hover {
+    background-color: #555;
+  }
+    
 }
 
 ul.custombullets{
