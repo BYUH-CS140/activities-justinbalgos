@@ -129,20 +129,6 @@ img {
   border: 1px solid brown;
 }
 
-ul.custombullets{
-  list-style: none;
-  padding-left: 0;
-}
-
-ul.custombullets li{
-  background-image:url('../images/bul.png') ; 
-  background-repeat: no-repeat;
-  background-position: 0 5px;  /* fine-tune vertically */
-  background-size: 25px 25px;  /* resize image */
-  padding-left: 32px;          /* space for bullet and text */
-  margin-bottom: 8px;     
-}
-
 figcaption {
   font-size: 14px;
 }
