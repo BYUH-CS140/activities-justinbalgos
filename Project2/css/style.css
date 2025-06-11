@@ -1,7 +1,5 @@
 /* Navigation Menu */
-main {
-  margin-top: 20px;
-}
+
 /* Base menu */
 .menu {
   list-style: none;
@@ -112,6 +110,7 @@ body {
 /* Main content grows to push footer down */
 main {
   flex: 1;
+  max-width: 900px;
   margin:0 auto;
   padding: 20px;
 }
@@ -168,11 +167,12 @@ figcaption {
 
 .places-grid {
   display: grid;
-  grid-template-columns: 1fr; /* Exactly 5 in one line */
+  grid-template-columns: repeat(5, 1fr); /* Exactly 5 in one line */
   gap: 20px;
 }
 
 .place {
+  flex: 1 1 calc(20% - 20px); /* 5 columns */
   background-color: #fffaf5; /* soft white background */
   border: 1px solid #a79873; /* muted brown border */
   border-radius: 10px;
@@ -248,9 +248,7 @@ figcaption {
   }
 
   .places-grid {
-    display: grid;
-    grid-template-columns: 1fr; /* Mobile default: 1 per row */
-    gap: 20px;
+    grid-template-columns: 1fr;
   }
 
   .float-img {
@@ -339,7 +337,7 @@ figcaption {
 
 @media (min-width: 768px) {  /* for tablets and ipads */
   .places-grid {
-    grid-template-columns: repeat(2, 1fr); /* 3 items per row on tablets */
+    grid-template-columns: repeat(3, 1fr); /* 3 items per row on tablets */
   }
 
   .float-img {
@@ -352,43 +350,21 @@ figcaption {
   }
 }
 
-@media (max-width: 1024px) {
-  .menu-container {
-    position: static;
-    width: 100%;
-    background-color: #333;
-    border-radius: 0;
-    padding: 10px 0;
-    box-shadow: none;
+@media (min-width: 1024px) {
+  .places-grid {
+    grid-template-columns: repeat(5, 1fr); /* back to 5 per row */
   }
 
-  .menu {
-    flex-direction: row;
-    justify-content: center;
-    gap: 20px;
+  .flex-section {
+    flex-wrap: nowrap;
+  }
+
+  .float-img {
+    width: 300px;
   }
 
   main {
-    margin-left: 0;
-    padding: 20px;
-  }
-
-  .dropdown-content {
-    position: absolute;
-    background-color: #333;
-    top: 50px;
-    left: 0;
-    padding: 0;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-  }
-
-  .dropdown {
-    position: relative;
-  }
-
-  .dropdown:hover .dropdown-content {
-    display: block;
+    padding: 40px;
   }
 }
 
