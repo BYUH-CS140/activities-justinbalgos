@@ -12,6 +12,8 @@ document.getElementById('randomColor').addEventListener('click', function() {
 
 function displayColor(color) {
     document.getElementById('displayArea').style.backgroundColor = color;
+    document.body.style.backgroundColor = color; // Part 1: Change whole page background
+    document.getElementById('colorValue').textContent = color; // Part 2: Display color value
 }
 
 function addToHistory(color) {
@@ -20,6 +22,11 @@ function addToHistory(color) {
     newColorBox.style.backgroundColor = color;
     newColorBox.classList.add('color-box');
     historyDiv.appendChild(newColorBox);
+
+    // Optional: allow clicking on history colors to reselect them
+    newColorBox.addEventListener('click', function() {
+        displayColor(color);
+    });
 }
 
 function getRandomColor() {
