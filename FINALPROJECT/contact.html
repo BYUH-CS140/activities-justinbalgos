@@ -6,48 +6,62 @@
   <title>Contact Me</title>
   <link rel="stylesheet" href="css/style.css">
   <style>
-    form {
-      max-width: 600px;
-      margin: 30px auto;
-      background-color: #fffaf5;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    body {
+      background-color: #fdf6e3;
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
     }
 
-    input, textarea {
-      width: 100%;
-      padding: 10px;
-      margin-bottom: 10px;
-      font-size: 16px;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      font-family: inherit;
+    .contact-wrapper {
+      max-width: 500px;
+      margin: 40px auto;
+      padding: 25px 30px;
+      background: #fffaf5;
+      border-radius: 12px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 24px;
     }
 
     label {
       font-weight: bold;
       display: block;
+      margin-top: 15px;
       margin-bottom: 5px;
     }
 
-    .feedback {
-      color: red;
-      font-size: 14px;
-      display: none;
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 16px;
+      box-sizing: border-box;
+      transition: border-color 0.3s ease;
     }
 
-    #contactSuccess {
-      color: green;
-      font-weight: bold;
-      display: none;
-      margin-top: 10px;
+    input:focus, textarea:focus {
+      border-color: #4a4e69;
+      outline: none;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 100px;
     }
 
     button {
+      display: block;
+      width: 100%;
+      margin-top: 20px;
+      padding: 12px;
       background-color: #4a4e69;
-      color: white;
-      padding: 10px 20px;
+      color: #fff;
       border: none;
       border-radius: 8px;
       font-size: 16px;
@@ -56,6 +70,25 @@
 
     button:hover {
       background-color: #7a8450;
+    }
+
+    .feedback {
+      margin-top: 10px;
+      font-size: 14px;
+      display: none;
+      color: green;
+      text-align: center;
+    }
+
+    @media (max-width: 500px) {
+      .contact-wrapper {
+        margin: 20px 10px;
+        padding: 20px;
+      }
+
+      h2 {
+        font-size: 20px;
+      }
     }
   </style>
 </head>
@@ -81,28 +114,26 @@
   </nav>
 
   <main>
-    <form id="contactForm">
-      <h2 style="text-align:center;">Contact Me</h2>
+    <div class="contact-wrapper">
+      <h2>Contact Me</h2>
+      <form id="contactForm">
+        <label for="name">Name:</label>
+        <input type="text" id="name" required />
 
-      <label for="name">Name:</label>
-      <input type="text" id="name" required />
-      <div class="feedback" id="nameFeedback">Please enter at least 2 characters.</div>
+        <label for="email">Email:</label>
+        <input type="email" id="email" required />
 
-      <label for="email">Email:</label>
-      <input type="email" id="email" required />
-      <div class="feedback" id="emailFeedback">Please enter a valid email address.</div>
+        <label for="message">Message:</label>
+        <textarea id="message" required></textarea>
 
-      <label for="message">Message:</label>
-      <textarea id="message" rows="5" required></textarea>
-      <div class="feedback" id="messageFeedback">Message must be at least 10 characters.</div>
-
-      <button type="submit">Send Message</button>
-      <div id="contactSuccess">Thank you! Your message has been sent.</div>
-    </form>
+        <button type="submit">Send Message</button>
+        <div class="feedback" id="formFeedback">✅ Message sent! Thank you.</div>
+      </form>
+    </div>
   </main>
 
   <footer>
-    <p>&copy; 2025 Photo Tour by Justin Balgos</p>
+    <p style="text-align:center;">&copy; 2025 Photo Tour by Justin Balgos</p>
   </footer>
 
   <script>
@@ -112,23 +143,14 @@
       const name = document.getElementById('name').value.trim();
       const email = document.getElementById('email').value.trim();
       const message = document.getElementById('message').value.trim();
+      const feedback = document.getElementById('formFeedback');
 
-      const nameValid = name.length >= 2;
-      const emailValid = /^[^@]+@\\w+(\\.\\w+)+\\w$/.test(email);
-      const messageValid = message.length >= 10;
-
-      document.getElementById('nameFeedback').style.display = nameValid ? 'none' : 'block';
-      document.getElementById('emailFeedback').style.display = emailValid ? 'none' : 'block';
-      document.getElementById('messageFeedback').style.display = messageValid ? 'none' : 'block';
-
-      if (nameValid && emailValid && messageValid) {
-        document.getElementById('contactSuccess').style.display = 'block';
+      if (name && email && message) {
+        feedback.style.display = 'block';
         setTimeout(() => {
+          feedback.style.display = 'none';
           document.getElementById('contactForm').reset();
-          document.getElementById('contactSuccess').style.display = 'none';
         }, 3000);
-      } else {
-        document.getElementById('contactSuccess').style.display = 'none';
       }
     });
   </script>
