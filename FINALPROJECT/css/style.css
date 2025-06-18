@@ -1,4 +1,10 @@
-/* Navigation Menu */
+body {
+  background-color: #fdf6e3;
+  font-family: "Playfair", serif;
+  margin: 0;
+  padding: 0;
+}
+
 
 /* Base menu */
 .menu {
