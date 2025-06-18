@@ -381,17 +381,20 @@ ul.custombullets li{
 
 .nav-container {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between; /* default: left and right for mobile */
   flex-wrap: wrap;
+  padding: 10px 20px;
+  background-color: #333;
 }
 
 .menu {
   list-style: none;
-  display: flex;
-  gap: 12px;
   margin: 0;
   padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
 }
 
 .menu li a {
@@ -409,9 +412,9 @@ ul.custombullets li{
 }
 
 .menu-toggle {
-  font-size: 26px;
-  color: white;
+  font-size: 28px;
   background: none;
+  color: white;
   border: none;
   cursor: pointer;
   display: none;
@@ -433,5 +436,22 @@ ul.custombullets li{
 
   .menu-toggle {
     display: block;
+  }
+}
+
+/* Center on large screens */
+@media (min-width: 1025px) {
+  .nav-container {
+    justify-content: center;
+  }
+
+  .menu {
+    flex-direction: row;
+    display: flex !important;
+    justify-content: center;
+  }
+
+  .menu-toggle {
+    display: none;
   }
 }
