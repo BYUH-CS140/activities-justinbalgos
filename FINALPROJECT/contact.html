@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact Me</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    form {
+      max-width: 600px;
+      margin: 30px auto;
+      background-color: #fffaf5;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-family: inherit;
+    }
+
+    label {
+      font-weight: bold;
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .feedback {
+      color: red;
+      font-size: 14px;
+      display: none;
+    }
+
+    #contactSuccess {
+      color: green;
+      font-weight: bold;
+      display: none;
+      margin-top: 10px;
+    }
+
+    button {
+      background-color: #4a4e69;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #7a8450;
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <ul class="menu">
+      <li><a href="index.html"><img src="images/home.png" class="icon"> HOME</a></li>
+      <li><a href="contact.html"><img src="images/location.png" class="icon"> CONTACT</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <form id="contactForm">
+      <h2 style="text-align:center;">Contact Me</h2>
+
+      <label for="name">Name:</label>
+      <input type="text" id="name" required />
+      <div class="feedback" id="nameFeedback">Please enter at least 2 characters.</div>
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" required />
+      <div class="feedback" id="emailFeedback">Please enter a valid email address.</div>
+
+      <label for="message">Message:</label>
+      <textarea id="message" rows="5" required></textarea>
+      <div class="feedback" id="messageFeedback">Message must be at least 10 characters.</div>
+
+      <button type="submit">Send Message</button>
+      <div id="contactSuccess">Thank you! Your message has been sent.</div>
+    </form>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Photo Tour by Justin Balgos</p>
+  </footer>
+
+  <script>
+    document.getElementById('contactForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const message = document.getElementById('message').value.trim();
+
+      const nameValid = name.length >= 2;
+      const emailValid = /^[^@]+@\\w+(\\.\\w+)+\\w$/.test(email);
+      const messageValid = message.length >= 10;
+
+      document.getElementById('nameFeedback').style.display = nameValid ? 'none' : 'block';
+      document.getElementById('emailFeedback').style.display = emailValid ? 'none' : 'block';
+      document.getElementById('messageFeedback').style.display = messageValid ? 'none' : 'block';
+
+      if (nameValid && emailValid && messageValid) {
+        document.getElementById('contactSuccess').style.display = 'block';
+        setTimeout(() => {
+          document.getElementById('contactForm').reset();
+          document.getElementById('contactSuccess').style.display = 'none';
+        }, 3000);
+      } else {
+        document.getElementById('contactSuccess').style.display = 'none';
+      }
+    });
+  </script>
+
+</body>
+</html>
