@@ -6,16 +6,25 @@
   <title>Marinduque Memory Game</title>
   <link rel="stylesheet" href="css/style.css">
   <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #fdf6e3;
+    }
+
     .game-container {
-      max-width: 640px;
-      margin: 40px auto;
+      max-width: 100%;
+      margin: 20px auto;
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 15px;
-      padding: 20px;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      padding: 10px;
     }
 
     .card {
+      width: 100%;
+      aspect-ratio: 1 / 1;
       perspective: 1000px;
       cursor: pointer;
     }
@@ -23,7 +32,7 @@
     .card-inner {
       position: relative;
       width: 100%;
-      padding-top: 100%; /* perfect square */
+      height: 100%;
       transform-style: preserve-3d;
       transition: transform 0.6s;
     }
@@ -38,8 +47,8 @@
       top: 0; left: 0;
       width: 100%; height: 100%;
       backface-visibility: hidden;
-      border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     }
 
     .card-front {
@@ -55,15 +64,15 @@
 
     .status-message {
       text-align: center;
-      font-size: 20px;
+      font-size: 18px;
       font-weight: bold;
-      margin: 20px 0;
+      margin: 20px 10px;
       color: green;
     }
 
     #restartBtn {
       display: block;
-      margin: 0 auto 30px;
+      margin: 0 auto 20px;
       padding: 10px 20px;
       font-size: 16px;
       background-color: #4a4e69;
@@ -77,9 +86,17 @@
       background-color: #7a8450;
     }
 
-    @media (max-width: 600px) {
+    @media (min-width: 600px) {
       .game-container {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(3, 1fr);
+        max-width: 600px;
+      }
+    }
+
+    @media (min-width: 900px) {
+      .game-container {
+        grid-template-columns: repeat(4, 1fr);
+        max-width: 720px;
       }
     }
   </style>
@@ -87,14 +104,31 @@
 <body>
   <nav>
     <ul class="menu">
-      <li><a href="index.html"><img src="images/home.png" class="icon"> HOME</a></li>
-      <li><a href="memory-game.html"><img src="images/location.png" class="icon"> MEMORY GAME</a></li>
-    </ul>
+        <li><a href="https://byuh-cs140.github.io/activities-justinbalgos/FinalProject/index.html"><img src="images/home.png" alt="Home icon for main page" class="icon"> HOME</a></li>
+        <li class="dropdown">
+          <a href="#"><img src="images/location.png" alt="Map icon for top places menu" class="icon"> TOP 5 PLACES TO VISIT</a>
+          <ul class="dropdown-content custombullets">
+            <li><a href="maniwaya.html">MANIWAYA</a></li>
+            <li><a href="LuzonDatum.html">LUZON DATUM</a></li>
+            <li><a href="BoacCathedral.html">BOAC CATHEDRAL</a></li>
+            <li><a href="MtMalindig.html">MT. MALINDIG</a></li>
+            <li><a href="cave.html">BAGUMGUNGAN CAVE</a></li>
+          </ul>
+        </li>
+        <li><a href="food.html"><img src="images/food.png" alt="Food icon for local dishes page" class="icon"> FOODS</a></li>
+        <li><a href="game.html"><img src="images/location.png" class="icon"> MEMORY GAME</a></li>
+        <li><a href="contact.html"><img src="images/location.png" class="icon"> CONTACT</a></li>
+      </ul>
   </nav>
 
   <main>
     <h2 style="text-align:center;">Marinduque Memory Game</h2>
     <p style="text-align:center;">Can you match all the landmarks?</p>
+
+    <div style="text-align:center; margin-bottom: 10px;">
+      <span>⏱ Time: <strong id="timer">0</strong>s</span> |
+      <span>🔢 Moves: <strong id="moves">0</strong></span>
+    </div>
 
     <button id="restartBtn">🔄 Restart Game</button>
 
@@ -103,7 +137,7 @@
   </main>
 
   <footer>
-    <p>&copy; 2025 Photo Tour by Justin Balgos</p>
+    <p style="text-align:center; font-size: 14px;">&copy; 2025 Photo Tour by Justin Balgos</p>
   </footer>
 
   <script>
@@ -118,11 +152,16 @@
     const gameBoard = document.getElementById("gameBoard");
     const statusMessage = document.getElementById("statusMessage");
     const restartBtn = document.getElementById("restartBtn");
+    const timerDisplay = document.getElementById("timer");
+    const movesDisplay = document.getElementById("moves");
 
-    let firstCard = null;
-    let secondCard = null;
+    let firstCard, secondCard;
     let lockBoard = false;
     let matches = 0;
+    let moves = 0;
+    let timer = 0;
+    let interval = null;
+    let started = false;
 
     function shuffle(array) {
       return array.sort(() => 0.5 - Math.random());
@@ -148,18 +187,33 @@
     function setupGame() {
       gameBoard.innerHTML = "";
       statusMessage.textContent = "";
-      firstCard = null;
-      secondCard = null;
+      firstCard = secondCard = null;
       lockBoard = false;
-      matches = 0;
+      matches = moves = timer = 0;
+      started = false;
+      clearInterval(interval);
+      timerDisplay.textContent = "0";
+      movesDisplay.textContent = "0";
 
       const doubledCards = shuffle([...originalCards, ...originalCards]);
       doubledCards.forEach((card, i) => createCard(card, i));
     }
 
+    function startTimer() {
+      interval = setInterval(() => {
+        timer++;
+        timerDisplay.textContent = timer;
+      }, 1000);
+    }
+
     function handleFlip(e) {
       const clickedCard = e.currentTarget;
       if (lockBoard || clickedCard.classList.contains("flip")) return;
+
+      if (!started) {
+        started = true;
+        startTimer();
+      }
 
       clickedCard.classList.add("flip");
 
@@ -169,6 +223,8 @@
       }
 
       secondCard = clickedCard;
+      moves++;
+      movesDisplay.textContent = moves;
       checkMatch();
     }
 
@@ -183,7 +239,9 @@
         resetBoard();
 
         if (matches === originalCards.length) {
-          statusMessage.textContent = "🎉 You matched all the landmarks!";
+          clearInterval(interval);
+          const stars = getStarRating(timer, moves);
+          statusMessage.innerHTML = `🎉 You matched all the landmarks in ${timer} seconds and ${moves} moves!<br>${stars}`;
         }
       } else {
         setTimeout(() => {
@@ -192,6 +250,12 @@
           resetBoard();
         }, 1000);
       }
+    }
+
+    function getStarRating(time, moves) {
+      if (moves <= 10 && time <= 40) return "⭐⭐⭐ Excellent!";
+      if (moves <= 14 && time <= 70) return "⭐⭐ Good!";
+      return "⭐ Keep practicing!";
     }
 
     function resetBoard() {
