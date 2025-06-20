@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Marinduque Memory Game</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair:ital,opsz,wght@0,5..1200,300..900;1,5..1200,300..900&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+        background-color: #fdf6e3;
+        font-family: "Playfair", serif;
+        margin: 0;
+        padding: 0;
+    }
+
+    .game-container {
+      max-width: 100%;
+      margin: 20px auto;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      padding: 10px;
+    }
+
+    .card {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      perspective: 1000px;
+      cursor: pointer;
+    }
+
+    .card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transform-style: preserve-3d;
+      transition: transform 0.6s;
+    }
+
+    .card.flip .card-inner {
+      transform: rotateY(180deg);
+    }
+
+    .card-front,
+    .card-back {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      backface-visibility: hidden;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .card-front {
+      background-color: #f4f4f4;
+    }
+
+    .card-back {
+      transform: rotateY(180deg);
+      background-size: cover;
+      background-position: center;
+      border: 2px solid #c39f85;
+    }
+
+    .status-message {
+      text-align: center;
+      font-size: 18px;
+      font-weight: bold;
+      margin: 20px 10px;
+      color: green;
+    }
+
+    #restartBtn {
+      display: block;
+      margin: 0 auto 20px;
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #4a4e69;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    #restartBtn:hover {
+      background-color: #7a8450;
+    }
+
+    @media (min-width: 600px) {
+      .game-container {
+        grid-template-columns: repeat(3, 1fr);
+        max-width: 600px;
+      }
+    }
+
+    @media (min-width: 900px) {
+      .game-container {
+        grid-template-columns: repeat(4, 1fr);
+        max-width: 720px;
+      }
+    }
+  </style>
+</head>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const toggleBtn = document.getElementById("menuToggle");
+      const navMenu = document.getElementById("navMenu");
+  
+      toggleBtn.addEventListener("click", function() {
+        navMenu.classList.toggle("show");
+      });
+    });
+  </script>
+<body>
+    <nav class="responsive-nav">
+        <div class="nav-container">
+          <button class="menu-toggle" id="menuToggle">&#9776;</button>
+          <ul class="menu" id="navMenu">
+            <li><a href="https://byuh-cs140.github.io/activities-justinbalgos/FINALPROJECT/index.htm"><img src="images/home.png" class="icon"> HOME</a></li>
+            <li class="dropdown">
+              <a href="#"><img src="images/location.png" alt="Map icon for top places menu" class="icon"> TOP 5 PLACES TO VISIT</a>
+              <ul class="dropdown-content custombullets">
+                <li><a href="maniwaya.html">MANIWAYA</a></li>
+                <li><a href="LuzonDatum.html">LUZON DATUM</a></li>
+                <li><a href="BoacCathedral.html">BOAC CATHEDRAL</a></li>
+                <li><a href="MtMalindig.html">MT. MALINDIG</a></li>
+                <li><a href="cave.html">BAGUMGUNGAN CAVE</a></li>
+              </ul>
+            </li>
+            <li><a href="food.html"><img src="images/food.png" class="icon"> FOODS</a></li>
+            <li><a href="game.html"><img src="images/game.jpg" class="icon"> MEMORY GAME</a></li>
+            <li><a href="contact.html"><img src="images/cont.jpg" class="icon"> CONTACT</a></li>
+          </ul>
+        </div>
+      </nav>
+  <main>
+    <h2 style="text-align:center;">Marinduque Memory Game</h2>
+    <p style="text-align:center;">Can you match all the landmarks?</p>
+
+    <div style="text-align:center; margin-bottom: 10px;">
+      <span>⏱ Time: <strong id="timer">0</strong>s</span> |
+      <span>🔢 Moves: <strong id="moves">0</strong></span>
+    </div>
+
+    <button id="restartBtn">🔄 Restart Game</button>
+
+    <div class="game-container" id="gameBoard"></div>
+    <div class="status-message" id="statusMessage"></div>
+  </main>
+
+  <footer>
+    <p style="text-align:center; font-size: 14px;">&copy; 2025 Photo Tour by Justin Balgos</p>
+  </footer>
+
+  <script>
+    const originalCards = [
+      { name: "Mt. Malindig", image: "images/1.jpeg" },
+      { name: "Boac Cathedral", image: "images/cat1.jpeg" },
+      { name: "Maniwaya", image: "images/man2.jpeg" },
+      { name: "Bagumbungan Cave", image: "images/c2.jpeg" },
+      { name: "Luzon Datum", image: "images/lz1.jpeg" }
+    ];
+
+    const gameBoard = document.getElementById("gameBoard");
+    const statusMessage = document.getElementById("statusMessage");
+    const restartBtn = document.getElementById("restartBtn");
+    const timerDisplay = document.getElementById("timer");
+    const movesDisplay = document.getElementById("moves");
+
+    let firstCard, secondCard;
+    let lockBoard = false;
+    let matches = 0;
+    let moves = 0;
+    let timer = 0;
+    let interval = null;
+    let started = false;
+
+    function shuffle(array) {
+      return array.sort(() => 0.5 - Math.random());
+    }
+
+    function createCard(cardInfo, index) {
+      const card = document.createElement("div");
+      card.classList.add("card");
+      card.dataset.name = cardInfo.name;
+      card.dataset.index = index;
+
+      card.innerHTML = `
+        <div class="card-inner">
+          <div class="card-front"></div>
+          <div class="card-back" style="background-image: url('${cardInfo.image}')"></div>
+        </div>
+      `;
+
+      card.addEventListener("click", handleFlip);
+      gameBoard.appendChild(card);
+    }
+
+    function setupGame() {
+      gameBoard.innerHTML = "";
+      statusMessage.textContent = "";
+      firstCard = secondCard = null;
+      lockBoard = false;
+      matches = moves = timer = 0;
+      started = false;
+      clearInterval(interval);
+      timerDisplay.textContent = "0";
+      movesDisplay.textContent = "0";
+
+      const doubledCards = shuffle([...originalCards, ...originalCards]);
+      doubledCards.forEach((card, i) => createCard(card, i));
+    }
+
+    function startTimer() {
+      interval = setInterval(() => {
+        timer++;
+        timerDisplay.textContent = timer;
+      }, 1000);
+    }
+
+    function handleFlip(e) {
+      const clickedCard = e.currentTarget;
+      if (lockBoard || clickedCard.classList.contains("flip")) return;
+
+      if (!started) {
+        started = true;
+        startTimer();
+      }
+
+      clickedCard.classList.add("flip");
+
+      if (!firstCard) {
+        firstCard = clickedCard;
+        return;
+      }
+
+      secondCard = clickedCard;
+      moves++;
+      movesDisplay.textContent = moves;
+      checkMatch();
+    }
+
+    function checkMatch() {
+      const isMatch = firstCard.dataset.name === secondCard.dataset.name;
+      lockBoard = true;
+
+      if (isMatch) {
+        matches++;
+        firstCard.removeEventListener("click", handleFlip);
+        secondCard.removeEventListener("click", handleFlip);
+        resetBoard();
+
+        if (matches === originalCards.length) {
+          clearInterval(interval);
+          const stars = getStarRating(timer, moves);
+          statusMessage.innerHTML = `🎉 You matched all the landmarks in ${timer} seconds and ${moves} moves!<br>${stars}`;
+        }
+      } else {
+        setTimeout(() => {
+          firstCard.classList.remove("flip");
+          secondCard.classList.remove("flip");
+          resetBoard();
+        }, 1000);
+      }
+    }
+
+    function getStarRating(time, moves) {
+      if (moves <= 10 && time <= 40) return "⭐⭐⭐ Excellent!";
+      if (moves <= 14 && time <= 70) return "⭐⭐ Good!";
+      return "⭐ Keep practicing!";
+    }
+
+    function resetBoard() {
+      [firstCard, secondCard, lockBoard] = [null, null, false];
+    }
+
+    restartBtn.addEventListener("click", setupGame);
+    setupGame();
+  </script>
+</body>
+</html>

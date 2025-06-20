@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact Me</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair:ital,opsz,wght@0,5..1200,300..900;1,5..1200,300..900&display=swap" rel="stylesheet">
+
+  <style>
+
+
+    body {
+      background-color: #fdf6e3;
+      font-family: "Playfair", serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    .contact-wrapper {
+      max-width: 500px;
+      margin: 40px auto;
+      padding: 25px 30px;
+      background: #fffaf5;
+      border-radius: 12px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 24px;
+    }
+
+    label {
+      font-weight: bold;
+      display: block;
+      margin-top: 15px;
+      margin-bottom: 5px;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 16px;
+      box-sizing: border-box;
+      transition: border-color 0.3s ease;
+    }
+
+    input:focus, textarea:focus {
+      border-color: #4a4e69;
+      outline: none;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    button {
+      display: block;
+      width: 100%;
+      margin-top: 20px;
+      padding: 12px;
+      background-color: #4a4e69;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #7a8450;
+    }
+
+    .feedback {
+      margin-top: 10px;
+      font-size: 14px;
+      display: none;
+      color: green;
+      text-align: center;
+    }
+
+    @media (max-width: 500px) {
+      .contact-wrapper {
+        margin: 20px 10px;
+        padding: 20px;
+      }
+
+      h2 {
+        font-size: 20px;
+      }
+    }
+  </style>
+</head>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const toggleBtn = document.getElementById("menuToggle");
+    const navMenu = document.getElementById("navMenu");
+
+    toggleBtn.addEventListener("click", function() {
+      navMenu.classList.toggle("show");
+    });
+  });
+</script>
+<body>
+  <nav class="responsive-nav">
+      <div class="nav-container">
+        <button class="menu-toggle" id="menuToggle">&#9776;</button>
+        <ul class="menu" id="navMenu">
+          <li><a href="https://byuh-cs140.github.io/activities-justinbalgos/FINALPROJECT/index.htm"><img src="images/home.png" class="icon"> HOME</a></li>
+          <li class="dropdown">
+            <a href="#"><img src="images/location.png" alt="Map icon for top places menu" class="icon"> TOP 5 PLACES TO VISIT</a>
+            <ul class="dropdown-content custombullets">
+              <li><a href="maniwaya.html">MANIWAYA</a></li>
+              <li><a href="LuzonDatum.html">LUZON DATUM</a></li>
+              <li><a href="BoacCathedral.html">BOAC CATHEDRAL</a></li>
+              <li><a href="MtMalindig.html">MT. MALINDIG</a></li>
+              <li><a href="cave.html">BAGUMGUNGAN CAVE</a></li>
+            </ul>
+          </li>
+          <li><a href="food.html"><img src="images/food.png" class="icon"> FOODS</a></li>
+          <li><a href="game.html"><img src="images/game.jpg" class="icon"> MEMORY GAME</a></li>
+          <li><a href="contact.html"><img src="images/cont.jpg" class="icon"> CONTACT</a></li>
+        </ul>
+      </div>
+    </nav>
+
+  <main>
+    <div class="contact-wrapper">
+      <h2>Contact Me</h2>
+      <form id="contactForm">
+        <label for="name">Name:</label>
+        <input type="text" id="name" required />
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" required />
+
+        <label for="message">Message:</label>
+        <textarea id="message" required></textarea>
+
+        <button type="submit">Send Message</button>
+        <div class="feedback" id="formFeedback">✅ Message sent! Thank you.</div>
+      </form>
+    </div>
+  </main>
+
+  <footer>
+    <p style="text-align:center;">&copy; 2025 Photo Tour by Justin Balgos</p>
+  </footer>
+
+  <script>
+    document.getElementById('contactForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const message = document.getElementById('message').value.trim();
+      const feedback = document.getElementById('formFeedback');
+
+      if (name && email && message) {
+        feedback.style.display = 'block';
+        setTimeout(() => {
+          feedback.style.display = 'none';
+          document.getElementById('contactForm').reset();
+        }, 3000);
+      }
+    });
+  </script>
+
+</body>
+</html>
