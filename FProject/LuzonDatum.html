@@ -7,22 +7,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair:ital,opsz,wght@0,5..1200,300..900;1,5..1200,300..900&display=swap" rel="stylesheet">
     <title>Luzon Datum</title>
 </head>
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-      const toggleBtn = document.getElementById("menuToggle");
-      const navMenu = document.getElementById("navMenu");
-  
-      toggleBtn.addEventListener("click", function() {
-        navMenu.classList.toggle("show");
-      });
-    });
-  </script>
+
 <body>
     <nav class="responsive-nav">
         <div class="nav-container">
           <button class="menu-toggle" id="menuToggle">&#9776;</button>
           <ul class="menu" id="navMenu">
-            <li><a href="https://byuh-cs140.github.io/activities-justinbalgos/FProject/index.html"><img src="images/home.png" class="icon"> HOME</a></li>
+            <li><a href="https://byuh-cs140.github.io/activities-justinbalgos/FProject/index.html"><img src="images/home.png" alt="home icon" class="icon"> HOME</a></li>
             <li class="dropdown">
               <a href="#"><img src="images/location.png" alt="Map icon for top places menu" class="icon"> TOP 5 PLACES TO VISIT</a>
               <ul class="dropdown-content custombullets">
@@ -33,9 +24,9 @@
                 <li><a href="cave.html">BAGUMGUNGAN CAVE</a></li>
               </ul>
             </li>
-            <li><a href="food.html"><img src="images/food.png" class="icon"> FOODS</a></li>
-            <li><a href="game.html"><img src="images/game.jpg" class="icon"> MEMORY GAME</a></li>
-            <li><a href="contact.html"><img src="images/cont.jpg" class="icon"> CONTACT</a></li>
+            <li><a href="food.html"><img src="images/food.png" alt="food icon" class="icon"> FOODS</a></li>
+            <li><a href="game.html"><img src="images/game.jpg" alt=" game icon" class="icon"> MEMORY GAME</a></li>
+            <li><a href="contact.html"><img src="images/cont.jpg" alt="contact icon" class="icon"> CONTACT</a></li>
           </ul>
         </div>
       </nav>
@@ -80,5 +71,15 @@
         <p>&copy; 2025 Photo Tour by Justin Balgos</p>    
     </footer>
     
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        const toggleBtn = document.getElementById("menuToggle");
+        const navMenu = document.getElementById("navMenu");
+    
+        toggleBtn.addEventListener("click", function() {
+          navMenu.classList.toggle("show");
+        });
+      });
+  </script>
 </body>
 </html>
