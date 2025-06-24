@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About | Marinduque Photo Tour</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/about.css" /> <!-- External CSS -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair:ital,opsz,wght@0,5..1200,300..900;1,5..1200,300..900&display=swap" rel="stylesheet">
+</head>
+<body>
+  <nav class="responsive-nav">
+    <div class="nav-container">
+      <button class="menu-toggle" id="menuToggle">&#9776;</button>
+      <ul class="menu" id="navMenu">
+        <li><a href="https://byuh-cs140.github.io/activities-justinbalgos/FProject/index.html"><img src="images/home.png" alt="home icon" class="icon"> HOME</a></li>
+        <li class="dropdown">
+          <a href="#"><img src="images/location.png" alt="Map icon for top places menu" class="icon"> TOP 5 PLACES TO VISIT</a>
+          <ul class="dropdown-content custombullets">
+            <li><a href="maniwaya.html">MANIWAYA</a></li>
+            <li><a href="LuzonDatum.html">LUZON DATUM</a></li>
+            <li><a href="BoacCathedral.html">BOAC CATHEDRAL</a></li>
+            <li><a href="MtMalindig.html">MT. MALINDIG</a></li>
+            <li><a href="cave.html">BAGUMGUNGAN CAVE</a></li>
+          </ul>
+        </li>
+        <li><a href="food.html"><img src="images/food.png" alt="food icon" class="icon"> FOODS</a></li>
+        <li><a href="game.html"><img src="images/game.jpg" alt=" game icon" class="icon"> PLAY A GAME</a></li>
+        <li><a href="contact.html"><img src="images/cont.jpg" alt="contact icon" class="icon"> CONTACT</a></li>
+      </ul>
+    </div>
+  </nav>
+  <main class="about-container">
+    <h2>About This Project</h2>
+
+    <p>This website is an interactive digital tour guide to the island of <strong>Marinduque</strong>, Philippines, showcasing its beautiful landscapes, rich culture, and must-visit tourist attractions.</p>
+
+    <h3>Overview</h3>
+    <p>The Marinduque Photo Tour combines scenic storytelling with interactive content to create a compelling travel experience. This site includes mobile-responsive design, educational elements, and an engaging memory game to enhance visitor enjoyment.</p>
+
+    <h3>Primary Purpose</h3>
+    <p>To inform and engage visitors about the island of Marinduque, while offering an entertaining way to learn about the province’s culture, landmarks, and history.</p>
+
+    <h3>Target Audience</h3>
+    <ul>
+      <li>Tourists and travelers researching destinations in the Philippines</li>
+      <li>Filipino students learning local history and geography</li>
+      <li>Users who enjoy interactive, educational web experiences</li>
+    </ul>
+
+    <h3>Key Features</h3>
+    <ul>
+      <li>A homepage with a scenic introduction to Marinduque</li>
+      <li>Five linked pages for top tourist destinations (Maniwaya, Luzon Datum, Boac Cathedral, Mt. Malindig, Bagumbungan Cave)</li>
+      <li>An interactive memory game to test knowledge about Marinduque</li>
+      <li>A responsive Contact Me section for inquiries and feedback</li>
+      <li>Fully responsive design across mobile, tablet, and desktop devices</li>
+    </ul>
+  </main>
+
+  <footer>
+    <p style="text-align:left;">&copy; 2025 Photo Tour by Justin Balgos</p>
+  </footer>
+
+  <script>
+    // Navigation toggle for mobile
+    document.getElementById("menuToggle").addEventListener("click", function() {
+      document.getElementById("navMenu").classList.toggle("show");
+    });
+  </script>
+</body>
+</html>
